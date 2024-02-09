@@ -11,34 +11,82 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>   
          
+
         function Comprova() {
+            Lletra = document.getElementById("lletra").value;
+            Lletra = Lletra.toLowerCase(); 
             
-            if ((document.getElementById("lletra").value <= "a") && 
-                (document.getElementById("lletra").value >= "l"))  
-            {
-                alert("es correcta");
+            switch (Lletra) {
+                case "à":
+                case "á":
+                    Lletra = "a";
+                  break;
+                case "è":
+                case "é":
+                    Lletra = "e";
+                  break;
+                case "ì":
+                case "í":
+                    Lletra = "i";
+                  break;
+                case "ò":
+                case "ó":
+                    Lletra = "o";
+                  break;
+                case "ù":
+                case "ú":
+                    Lletra = "u";
+                  break;
+                case 5:
+                  break;
+              }
+    
+            if ((Lletra >= "a") && (Lletra <= "l")) 
+                {
+                    alert("es correcta");
+                }
+            else{
+                    alert("es incorrecta");
+                Lletra = Lletra + lletra + "";
+                document.getElementById("Lletres").innerHTML = Lletres;
+
+                 Vides = Vides - 1;
+
+                 document.getElementById("vides").innerHTML =
+                         "nbsp;&nbsp;&nbsp;nbsp;nbsp;nbsp;nbsp" + Vides;
+
             }
-        }
+            
+            if(Vides <= 0) {
+                window.alert("i has perdut!");
+                AturaTot();
+            } else {
+                if (Paraula.length >=14) {
+                    window.alert("i has guanyat!");
+                    AturaTot();
+                }
+            }
+    }
        </script>
     </head>
       
-        
+<body>        
         <h1>Prototip joc del penjat</h1>
-            <input id="lletra" type="text" placeholder="Escriu una lletra minúscula"> 
+            <input id="lletra" type="text" placeholder="Escriu una lletra minúscula" maxlength="1"> 
             <button type="button" onclick="Comprova()">Comprova</button> 
    
             
     <h2>Paraula</h2>
-    <p>---------</p>
+    <correcta>---------</correcta>
     
     <h2>Vides</h2>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</p>
     
     <h2>Lletres</h2>
-    <p>zzzzzzzz</p>
+    <incorrecta>zzzzzzzz</incorrecta>
     
-    <h3>Credits:</h3>
+    <h3>Credits:https://prosselloe.wordpress.com/</h3>
     <p> </p>
     
-    
+</body>          
 <html>
