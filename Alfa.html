@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="Alfa.js"></script>
+    </head>
+                
+
+<body onload="Amaga();" style="background-image: url('img/Desert.png'); 
+      background-size: 1300px 1000px; background-repeat: no-repeat;">
+      
+    <h1>Prototip joc del penjat</h1>
+            <input id="lletra" type="text" placeholder="Escriu una lletra minúscula" maxlength="1"> 
+            <button type="button" onclick="Comprova()">Comprova</button> 
+   
+            
+    <h2>Paraula</h2>
+    <p id="correcta">---------</p>
+    
+    <h2>Vides</h2> 
+    <p id="vides">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</p>
+    
+    <h2>Lletres</h2>
+    <p id="incorrecta">--------</p>
+    
+    <h3>Credits:https://prosselloe.wordpress.com/</h3>
+    <p> </p>
+    
+        <img id="ahorcado_0" src="img/ahorcado_0.png" style="width:280px;height:270px;"
+            onclick='document.getElementById("ahorcado_0").hidden = true;
+                     document.getElementById("ahorcado_6").hidden = false;'/>
+       
+        <img id="ahorcado_1" src="img/ahorcado_1.png" style="width:280px;height:270px;"
+            onclick='document.getElementById("ahorcado_1").hidden = true;
+                     document.getElementById("ahorcado_0").hidden = false;'/>
+      
+        <img id="ahorcado_2" src="img/ahorcado_2.png" style="width:280px;height:270px;" 
+             onclick='document.getElementById("ahorcado_2").hidden = true;
+                      document.getElementById("ahorcado_1").hidden = false;'/>
+        
+        <img id="ahorcado_3" src="img/ahorcado_3.png" style="width:280px;height:270px;" 
+             onclick='document.getElementById("ahorcado_3").hidden = true;
+                      document.getElementById("ahorcado_2").hidden = false;'/>
+        
+        <img id="ahorcado_4" src="img/ahorcado_4.png" style="width:280px;height:270px;" 
+             onclick='document.getElementById("ahorcado_4").hidden = true;
+                      document.getElementById("ahorcado_3").hidden = false;'/>
+        
+        <img id="ahorcado_5" src="img/ahorcado_5.png" style="width:280px;height:270px;" 
+             onclick='document.getElementById("ahorcado_5").hidden = true;
+                      document.getElementById("ahorcado_4").hidden = false;'/>
+        
+        <img id="ahorcado_6" src="img/ahorcado_6.png" style="width:280px;height:270px;" 
+             onclick='document.getElementById("ahorcado_6").hidden = true;
+                      document.getElementById("ahorcado_5").hidden = false;'/>
+    
+</body>          
+<html>
