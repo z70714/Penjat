@@ -23,8 +23,131 @@ var pista = pistes[paraulespistes[aleatori]];
 for(var i=0; i <paraula.length; i++) {
    Paraula[i] = "_";
    }
-   
-        // Vides = 7;
+    
+// Simulam una Taula de ParaulesPistes, similar a la consulta a la base de dades, amb un array d'objectes
+    const Taula_dft = [
+        // Deixam per defecte les paraules i pistes en Català
+        {"Paraula": "cordes", "Pista": "A ca un penjat, no hi anomenis cordes"},
+        {"Paraula": "fetge", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"},
+        {"Paraula": "forca", "Pista": "A la quinta forca"},
+        {"Paraula": "jutges", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"},
+        {"Paraula": "jutjat", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"},
+        {"Paraula": "mengen", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"},
+        {"Paraula": "penjat", "Pista": "A ca un penjat, no hi anomenis cordes"},
+        {"Paraula": "quinta", "Pista": "A la quinta forca"},
+        {"Paraula": "setze", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"}
+    ];
+    var Taula = Taula_dft;
+    
+     // Diferents idiomes per la GUI
+    const Idiomes_dft = [
+        {
+            "IdIdioma": "ca",
+            "Titol": "Versió amb Base de Dades Joc del Penjat",
+            "Versio": "Versió γ Joc del Penjat",
+            "Input": "Escriu una lletra minúscula",
+            "Pregunta": "Anam a la quinta forca?",
+            "Comprovar": "Comprovar",
+            "Paraula": "Paraula:",
+            "Sopes": "Demanes sopes?",
+            "Pista": "Pista",
+            "Vides": "Vides:",
+            "Moix": "Un moix en té set?",
+            "Lletres": "Lletres:",
+            "Ets": "Ets de lletres?",
+            "URLpistes": "URLpistes:",
+            "Dita": "Dita",
+            "Dita1": "A la quinta forca, ",
+            "Dita2": "A ca un penjat, no hi anomenis cordes, ",
+            "Dita3": "Setze jutges d'un jutjat mengen fetge d'un penjat, …",
+            "Credits": "Crèdits:",
+            "YouTube": "Joc Penjat on Scratch",
+            "Wikis": "Penjat",
+            "Idioma": "en Català",
+            "Diccionari": "Diccionari",
+            "Teclat": "Mostra o Amaga",
+            "Incorrecte": "Caràcter incorrecte!",
+            "Repetida": "Lletra repetida!",
+            "Encertat": "Has encertat!",
+            "Guanyat": "i has guanyat!",
+            "Fallat": "Has fallat!",
+            "Perdut": "i has perdut!",
+            "Descansi": "En pau descansi – RIP!",
+            "Puntuacio": "Puntuació:"
+        },
+        {
+            "IdIdioma": "es",
+            "Titol": "Versión con Base de Datos Juego del Ahorcado",
+            "Versio": "Versión γ Juego del Ahorcado",
+            "Input": "Escribe una letra minúscula",
+            "Pregunta": "Vamos al quinto pino?",
+            "Comprovar": "Comprobar",
+            "Paraula": "Palabra:",
+            "Sopes": "Te rindes?",
+            "Pista": "Pista",
+            "Vides": "Vidas:",
+            "Moix": "Un gato tiene siete?",
+            "Lletres": "Letras:",
+            "Ets": "Eres de letras?",
+            "URLpistes": "URLpistas:",
+            "Dita": "Dicho",
+            "Dita1": "Al quinto pino, ",
+            "Dita2": "En casa de un ahorcado, no hables de cuerdas,",
+            "Dita3": "Dieciséis jueces de un juzgado comen hígado de un ahorcado, …",
+            "Credits": "Crèditos:",
+            "YouTube": "Juego Ahorcado on Scratch",
+            "Wikis": "Ahorcado",
+            "Idioma": "en Español",
+            "Diccionari": "Diccionario",
+            "Teclat": "Muestra o Esconde",
+            "Incorrecte": "Carácter incorrecto!",
+            "Repetida": "Letra repetida!",
+            "Encertat": "Has acertado!",
+            "Guanyat": "y has ganado!",
+            "Fallat": "Has fallado!",
+            "Perdut": "y has perdido!",
+            "Descansi": "En paz descanse - RIP!",
+            "Puntuacio": "Puntuación:"
+        },
+        {
+            "IdIdioma": "en",
+            "Titol": "Hangman Game Database Version",
+            "Versio": "Hangman Game γ Versión",
+            "Input": "Write a lowercase letter",
+            "Pregunta": "Are we going to the boondocks?",
+            "Comprovar": "Check it",
+            "Paraula": "Word:",
+            "Sopes": "You give up?",
+            "Pista": "Clue",
+            "Vides": "Lives:",
+            "Moix": "A cat has seven?",
+            "Lletres": "Letters:",
+            "Ets": "Are you in liberal arts?",
+            "URLpistes": "URLclues:",
+            "Dita": "Saying",
+            "Dita1": "To the boondocks,",
+            "Dita2": "In a hanged man's home, don't talk about ropes,",
+            "Dita3": "Sixteen judges of a court eat the liver of a hangman, …",
+            "Credits": "Credits:",
+            "YouTube": "Hangman Game on Scratch",
+            "Wikis": "Hangman",
+            "Idioma": "in English",
+            "Diccionari": "Dictionary",
+            "Teclat": "Show or Hide",
+            "Incorrecte": "Wrong character!",
+            "Repetida": "Repeated letter!",
+            "Encertat": "You're right!",
+            "Guanyat": "and you have won!",
+            "Fallat": "You have failed!",
+            "Perdut": "and you have lost!",
+            "Descansi": "Rest in peace - RIP!",
+            "Puntuacio": "Score:"
+        }
+    ]
+    var Idiomes = Idiomes_dft;
+    // 
+    // 
+// Vides = 7;
         // Paraula="";
          
         function Comprova() {
@@ -152,25 +275,63 @@ for(var i=0; i <paraula.length; i++) {
           }
           
 
-
-function AlaWeb_SQLite (Idioma) {
-    config = {
-        locateFile: filename => '/dist/$(filename}'
-    };
-  alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
-            SELECT * FROM TblTextosGUI;',[],
-   [], function(idiomes) {SQL_TblTextosGUI (Idioma, Idiomes.pop());}
-   );
+    //Canviam els diferents literals de la GUI segons l'idioma
+    function CanviarIdioma(IdIdioma) {
+        window.alert("CanviarIdioma = '" + IdIdioma + "'");
+        if ((IdIdioma != "ca")&& (IdIdioma != "ca")) {
+            document.getElementById("Idiomes").value = IdIdioma;
+        }
+        AlaWeb_SQLite(IdIdioma);
+        Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
+        
+        /*
+        document.title = Idioma.Titol;
+        document.getElementById("Version").innerHTML = Idioma.Version;
+        document.getElementById("lletra").placeholder = Idioma.Input;
+        document.getElementById("comprovar").innerHTML = Idioma.Comprovar;
+        */
    
     }
 
+  // Funció per carregar la base de dades penjat.db
+    function AlaWeb_SQLite(IdIdioma) {
+        window.alert("AlaWeb_SQLite IdIdioma = '" + IdIdioma + "'");
+        config = {
+            locateFile: filename => `/dist/${filename}`
+        };
 
-function CanviarIdioma(Idioma) {
-    
-    if ((IdIdioma != "ca")&& (IdIdioma !="es")) {
-        document.getElementById("Idiomes").value = IdIdioma;
-        
-    }
-    }
-    
+        // Recuperam de la base de dades els TextosGUI per tots els Idiomes
+        alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
+                SELECT * FROM TblTextosGUI;',
+           [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+        //     [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+        );
+
+        /*
+        alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
+                SELECT Paraula, Pista \n\
+                FROM TblParaules INNER JOIN TblPistes \n\
+                ON TblParaules.IdPista = TblPistes.IdPista \n\
+                WHERE TblParaules.IdIdioma = "' + IdIdioma + '";',
+              [], function(taula) {Print_Data(Taula = taula.pop());}
+        //    [], function(taula) {SQL_TblParaulesPistes(IdIdioma, taula.pop());}
+        );
+        */
+    } 
+     
+// Print data  
+    function Print_Data(res) {
+        for (var i in res)
+        {
+           // console.log("row " + i);
+           // document.getElementById("res").innerHTML += "<br>";
+           for (var j in res[i])
+             {
+              // console.log(" " + res[i][j]);
+              // document.getElementById("res").innerHTML += res[i][j] + ", ";
+              window.alert("res[" + i + "][" +j + "] = " + res[i][j]);
+             }
+        }
+    } 
+
     
