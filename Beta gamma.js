@@ -143,7 +143,7 @@ for(var i=0; i <paraula.length; i++) {
             "Descansi": "Rest in peace - RIP!",
             "Puntuacio": "Score:"
         }
-    ]
+    ];
     var Idiomes = Idiomes_dft;
     // 
     // 
@@ -261,6 +261,7 @@ for(var i=0; i <paraula.length; i++) {
      
               // Amagan totes les imatges del joc llevat de la primera.
           function Amaga(){
+            // window.alert("Amaga");
             document.getElementById("ahorcado_0").hidden = true;
             document.getElementById("ahorcado_1").hidden = true;
             document.getElementById("ahorcado_2").hidden = true;
@@ -278,13 +279,14 @@ for(var i=0; i <paraula.length; i++) {
     //Canviam els diferents literals de la GUI segons l'idioma
     function CanviarIdioma(IdIdioma) {
         window.alert("CanviarIdioma = '" + IdIdioma + "'");
-        if ((IdIdioma != "ca")&& (IdIdioma != "ca")) {
+        /*        if ((IdIdioma != "ca")&& (IdIdioma != "ca")) {
             document.getElementById("Idiomes").value = IdIdioma;
         }
+        */
         AlaWeb_SQLite(IdIdioma);
+        /*
         Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
         
-        /*
         document.title = Idioma.Titol;
         document.getElementById("Version").innerHTML = Idioma.Version;
         document.getElementById("lletra").placeholder = Idioma.Input;
@@ -293,7 +295,7 @@ for(var i=0; i <paraula.length; i++) {
    
     }
 
-  // Funció per carregar la base de dades penjat.db
+    // Funció per carregar la base de dades penjat.db
     function AlaWeb_SQLite(IdIdioma) {
         window.alert("AlaWeb_SQLite IdIdioma = '" + IdIdioma + "'");
         config = {
@@ -303,11 +305,12 @@ for(var i=0; i <paraula.length; i++) {
         // Recuperam de la base de dades els TextosGUI per tots els Idiomes
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT * FROM TblTextosGUI;',
-           [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
-        //     [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+        //    [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+            [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
         );
+  
 
-        /*
+        
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT Paraula, Pista \n\
                 FROM TblParaules INNER JOIN TblPistes \n\
@@ -316,10 +319,35 @@ for(var i=0; i <paraula.length; i++) {
               [], function(taula) {Print_Data(Taula = taula.pop());}
         //    [], function(taula) {SQL_TblParaulesPistes(IdIdioma, taula.pop());}
         );
-        */
+        
     } 
-     
-// Print data  
+    
+        function SQL_TblTextosGUI(IdIdioma, TblTextosGUI) 
+            {
+            Idiomes=TblTextosGUI;
+            if(Idiomes.length==0){Idiomes=Idiomes_dft;};
+            if(Idiomes.find(Idioma=>Idioma.IdIdioma==IdIdioma)==undefined){
+                window.alert("GUI:Idioma no trobat/Idioma no encontrado/Lenguage not found!");
+                idiomes=Idiomes_dft;
+            }
+           
+        }
+            
+        function SQL_TblParaulesPistes(IdIdioma, TblParaulesPistes) {
+            // window.alert("SQL_TblParaulesPistes IdIdioma = '" + IdIdioma + IdIdioma + "'");
+            Taula = TblParaulesPistes;
+            if (Taula.length == 0) {
+                window.alert("Idioma sense paraules / Idioma sin palabras / Language without words!");
+                Taula = Taula_dft;
+                IdIdioma = "ca";
+            }
+                
+            }
+                
+            
+        
+
+   // Print data  
     function Print_Data(res) {
         for (var i in res)
         {
@@ -333,5 +361,4 @@ for(var i=0; i <paraula.length; i++) {
              }
         }
     } 
-
     
