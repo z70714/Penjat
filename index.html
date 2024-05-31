@@ -9,7 +9,9 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="Beta.js"></script>
+        <script src="js/Beta gamma.js"></script>
+        <script src="js/alasql.js"></script>
+        <script src="js/sql.js"></script>
     </head>
                 
 
@@ -17,6 +19,15 @@ and open the template in the editor.
       background-size: 1300px 1000px; background-repeat: no-repeat;">
       
     <h1>Prototip joc del penjat</h1>
+    
+        <select name="Idiomes" onchange="CanviarIdioma(this.value)" title="Select">
+    <option value="ca">ca</option>
+    <option value="es">es</option>
+    <option value="en">en</option>
+    <option value="fr">fr</option>
+    <option value="de">de</option>
+    <option value="it">it</option>
+</select>
             <input id="lletra" type="text" placeholder="Escriu una lletra minúscula" maxlength="1"> 
             <button type="button" onclick="Comprova()">Comprova</button> 
    
