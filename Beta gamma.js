@@ -392,4 +392,3 @@ for(var i=0; i <paraula.length; i++) {
              }
         }
     }
-
