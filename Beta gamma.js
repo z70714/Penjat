@@ -340,8 +340,8 @@ for(var i=0; i <paraula.length; i++) {
         // Recuperam de la base de dades els TextosGUI per tots els Idiomes
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT * FROM TblTextosGUI;',
-            [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
-        //    [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+        //    [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+            [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
         );
 
         /*
@@ -392,3 +392,4 @@ for(var i=0; i <paraula.length; i++) {
              }
         }
     }
+
